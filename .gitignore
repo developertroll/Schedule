@@ -1,0 +1,3 @@
+node_modules/
+back/src/secretkey.js
+package-lock.json
