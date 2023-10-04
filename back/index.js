@@ -14,6 +14,10 @@ app.use(express.json());
 // http 요청 압축 //
 app.use(compression());
 
+//정적파일 제공
+app.use(express.static('front'));
+
+
 // app.get("/users", function(req, res){
 //     const name = req.body.name;
 //     return res.send(name);
@@ -27,3 +31,4 @@ userRouter(app);
 app.listen(port, () => {
   console.log(`Express app listening at port: ${port}`)
 })
+
