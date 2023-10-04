@@ -5,6 +5,10 @@ const port = 3000
 const cors = require('cors');
 const {indexRouter} = require('./src/router/indexRouter.js');
 const {userRouter} = require('./src/router/userRouter.js');
+
+//정적파일 제공
+app.use(express.static('front'));
+
 // express 미들웨어 설정//  
 app.use(cors());
 
@@ -14,8 +18,7 @@ app.use(express.json());
 // http 요청 압축 //
 app.use(compression());
 
-//정적파일 제공
-app.use(express.static('front'));
+
 
 
 // app.get("/users", function(req, res){
