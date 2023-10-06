@@ -11,19 +11,19 @@ if(token){
 //입력값 유효성 검사
 const inputEmail = document.getElementById("email");
 const emailMessage = document.querySelector("div.email-message");
-inputEmail.addEventListener("input", isVaildEmail);
+inputEmail.addEventListener("blur", isVaildEmail);
 
 const inputPassword = document.getElementById("password");
 const passwordMessage = document.querySelector("div.password-message");
-inputPassword.addEventListener("input", isVaildPassword);
+inputPassword.addEventListener("blur", isVaildPassword);
 
 const inputPasswordConfirm = document.getElementById("password-comfirm");
 const passwordConfirmMessage = document.querySelector("div.password-confirm-message");
-inputPasswordConfirm.addEventListener("input", isVaildPasswordConfirm);
+inputPasswordConfirm.addEventListener("blur", isVaildPasswordConfirm);
 
 const inputNickname = document.getElementById("nickname");
 const nicknameMessage = document.querySelector("div.nickname-message");
-inputNickname.addEventListener("input", isVaildNickname);
+inputNickname.addEventListener("blur", isVaildNickname);
 
 const signupButton = document.getElementById("signup");
 signupButton.addEventListener("click", signup);
@@ -73,12 +73,33 @@ function isVaildNickname(event){
 }
 
 //회원가입 API 호출
-
+function focusWrongInput(){
+    switch(false){
+        case isVaildEmail():
+            inputEmail.focus();
+            alert("이메일을 확인해주세요.")
+            break;
+        case isVaildPassword():
+            inputPassword.focus();
+            alert("비밀번호를 확인해주세요.")
+            break;
+        case isVaildPasswordConfirm():
+            inputPasswordConfirm.focus();
+            alert("비밀번호를 확인해주세요.")
+            break;
+        case isVaildNickname():
+            inputNickname.focus();
+            alert("닉네임을 확인해주세요.")
+            break;
+        default:
+            break;
+    }
+}
 async function signup(event){
     const isVaildRequest = isVaildEmail() && isVaildPassword() && isVaildPasswordConfirm() && isVaildNickname();
 
     if(!isVaildRequest){
-        alert("입력값을 확인해주세요.");
+        focusWrongInput();
         return false;
     }
 

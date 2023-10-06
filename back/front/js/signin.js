@@ -10,6 +10,11 @@ const btnSignin = document.getElementById("signin");
 const inputEmail = document.getElementById("email");
 const inputPassword = document.getElementById("password");  
 
+inputPassword.addEventListener("keyup", function(event){
+    if(event.key === "Enter"){
+        signin();
+    }
+});
 btnSignin.addEventListener("click", signin);
 
 async function signin(event){
