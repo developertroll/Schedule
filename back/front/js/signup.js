@@ -90,7 +90,7 @@ async function signup(event){
     const config = {
         method:"post",
         url: url+"/user",
-        data:{
+        data: {
             email:currentEmail,
             password:currentPassword,
             nickname:currentNickname,
@@ -98,15 +98,15 @@ async function signup(event){
     }
     try{
     const res = await axios(config);
-    if(res.data.code===200){
-        alert("회원가입에 성공했습니다.");
-        window.location.href = "signin.html";
-        return true;
-    }else{
+    console.log(res.data.code);
+    if(!res.data.code===200){
         alert("회원가입에 실패했습니다.");
         location.reload();
         return false;
     }
+        alert("회원가입에 성공했습니다.");
+        window.location.href = "signin.html";
+        return true;
     }catch(err){
         console.log(err);
         alert("회원가입에 실패했습니다.");
