@@ -9,20 +9,20 @@ exports.signup = async function (req, res) {
     }
 
     //이메일 정규표현식으로 체크
-    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
-    if(!emailRegex.test(email)){
-        return res.status(400).send("Bad Request");
-    }
+    // const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
+    // if(!emailRegex.test(email)){
+    //     return res.status(400).send("Bad Request");
+    // }
 
-    //비밀번호 정규식 8~12자 영문, 숫자 조합
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
-    if(!passwordRegex.test(password)){
-        return res.status(400).send("Bad Request");
-    }
+    // //비밀번호 정규식 8~12자 영문, 숫자 조합
+    // const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
+    // if(!passwordRegex.test(password)){
+    //     return res.status(400).send("Bad Request");
+    // }
 
-    if(nickname.length > 10 || nickname.length < 2){
-        return res.status(400).send("Bad Request");
-    }
+    // if(nickname.length > 10 || nickname.length < 2){
+    //     return res.status(400).send("Bad Request");
+    // }
     // 이메일, 닉네임 중복체크
     const emailRows = await userDAO.selectUserEmail(email);
     if(emailRows.length > 0){
